@@ -1,0 +1,11 @@
+node_modules
+frontend
+data/database/*
+data/illust/*
+
+v13s.config.json
+
+v13s
+v13s.exe
+
+!.gitkeep
