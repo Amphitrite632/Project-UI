@@ -1,9 +1,9 @@
 #body {
     box-sizing: border-box;
     width: var(--body-width);
-    padding: 5rem 0;
-    background-color: var(--color-child-02);
-    border-radius: 0.625rem;
+    padding: 3.5rem 0;
+    border: 0.075rem solid var(--color-complement-04);
+    border-radius: 0.5rem;
 }
 
 .illustContainer {
@@ -19,7 +19,7 @@
     height: calc((var(--body-width) * 0.72) * var(--illust-height-ratio));
     background-color: var(--color-complement-03);
     background-size: cover;
-    border-radius: 0.5rem;
+    border-radius: 0.4rem;
     box-shadow: 0.5rem 0.5rem 1.75rem rgb(0 12 12 / 7.2%);
 }
 

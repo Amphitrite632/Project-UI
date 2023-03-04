@@ -13,6 +13,11 @@ const routes = [
         name: "about",
         component: About,
     },
+    {
+        path: "/edit/illust",
+        name: "home",
+        component: Home,
+    },
 ]
 
 const router = createRouter({

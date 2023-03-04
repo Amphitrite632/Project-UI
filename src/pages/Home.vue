@@ -2,7 +2,12 @@
     import { getOptions } from "../util"
     import Header from "../components/Header.vue"
     import Illusts from "../components/Illusts.vue"
+    import IllustInfoEditDialog from "../components/IllustInfoEditDialog.vue"
+    import Footer from "../components/Footer.vue"
+    import BodyFilter from "../components/BodyFilter.vue"
     import "../css/home.css"
+
+    window.localStorage.removeItem("editIllustTargetID")
 </script>
 
 <script lang="ts">
@@ -19,4 +24,7 @@
     <div id="body">
         <Illusts />
     </div>
+    <IllustInfoEditDialog />
+    <Footer />
+    <BodyFilter />
 </template>

@@ -12,10 +12,11 @@
     font-family: "Inter", "Kinto", sans-serif;
     font-size: 18px;
     user-select: none;
-    background-color: var(--color-complement-03);
+    background-color: var(--color-child-02);
 
     --body-width: 39rem;
     --header-height: 3rem;
+    --footer-height: 2.5rem;
 }
 
 a {
@@ -28,6 +29,7 @@ a {
 
 header {
     position: relative;
+    z-index: 3;
     display: flex;
     align-items: center;
     width: 100%;
@@ -113,7 +115,7 @@ header {
 }
 
 #body {
-    min-height: calc(100vh - var(--header-height) - 4rem);
+    min-height: calc(100vh - var(--header-height) - (4rem - (var(--header-height) - var(--footer-height))));
     margin: 2rem auto;
 }
 
@@ -128,27 +130,32 @@ header {
     position: fixed;
     top: 50%;
     left: 50%;
+    z-index: 1;
     width: 100vw;
     height: 100vh;
     pointer-events: none;
     background-color: #00000000;
     transform: translate(-50%, -50%);
-    backdrop-filter: blur(0);
     animation-duration: 0.35s;
+    backdrop-filter: blur(0);
+}
+
+.aboveBodyFilter {
+    z-index: 2;
 }
 
 footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: var(--header-height);
+    height: var(--footer-height);
     background-color: var(--color-child-02);
+    border-top: 0.075rem solid var(--color-complement-04);
 }
 
 #productName {
-    font-size: 0.95rem;
+    font-size: 0.925rem;
     font-weight: 500;
-    color: var(--color-accent-01);
 }
 
 @font-face {
@@ -211,5 +218,25 @@ footer {
         pointer-events: none;
         background-color: #00000000;
         backdrop-filter: blur(0);
+    }
+}
+
+@keyframes activateModal {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes disableModal {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
     }
 }

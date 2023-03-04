@@ -10,6 +10,7 @@ module.exports = {
                 ignoreFontFamilies: "Material Icons",
             },
         ],
+        "no-duplicate-selectors": null,
         "selector-class-pattern": "^([A-Z]{2,}|[a-z])+([A-Z][a-z]+)*$",
         "selector-id-pattern": "^([A-Z]{2,}|[a-z])+([A-Z][a-z]+)*$",
         "keyframes-name-pattern": "^([A-Z]{2,}|[a-z])+([A-Z][a-z]+)*$",

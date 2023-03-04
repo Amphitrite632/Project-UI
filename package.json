@@ -5,7 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "build": "vue-tsc && vite build",
-    "format": "npx prettier --write **/*.{ts,vue,html}"
+    "format": "npx prettier --write **/*.{ts,vue,html} && stylelint --fix **/*.css"
   },
   "dependencies": {
     "vue": "^3.2.45",

@@ -10,20 +10,60 @@
 </template>
 
 <script lang="ts">
-import { IllustInfo } from '../v13s.types'
+    import { IllustInfo } from "../v13s.types"
 
-export default {
-    data: () => {
-        const illusts: IllustInfo[] = []
-        return {
-            illusts: illusts,
-        }
-    },
+    function activateIllustInfoEditDialog(illustID: string) {
+        history.pushState("", "", "/edit/illust/")
+        window.localStorage.setItem("editIllustTargetID", illustID)
+        const illustInfoEditDialog = document.getElementById("illustInfoEditDialog") as HTMLDialogElement
+        const bodyFilter = document.getElementById("bodyFilter") as HTMLDivElement
 
-    async mounted() {
-        const illustJSON = await fetch("/api/illusts/")
-        this.illusts = await illustJSON.json()
-        console.log(this.illusts)
+        illustInfoEditDialog.open = true
+        bodyFilter.style.animationName = "activateBodyFilter"
+        illustInfoEditDialog.style.animationName = "activateModal"
+        //TODO: ダイアログへの値の受け渡しを書く
     }
-}
+
+    function disableIllustInfoEditDialog() {
+        history.pushState("", "", "/")
+
+        const bodyFilter = document.getElementById("bodyFilter") as HTMLDivElement
+        const illustInfoEditDialog = document.getElementById("illustInfoEditDialog") as HTMLDivElement
+        illustInfoEditDialog.style.animationName = "disableModal"
+        bodyFilter.style.animationName = "disableBodyFilter"
+    }
+
+    window.addEventListener("popstate", () => {
+        if ((window.location.pathname = "/edit/illust/")) {
+            const illustID = window.localStorage.getItem("editIllustTargetID")
+            if (illustID != null) {
+                activateIllustInfoEditDialog(illustID)
+            } else {
+                disableIllustInfoEditDialog()
+            }
+        } else {
+            disableIllustInfoEditDialog()
+        }
+    })
+
+    export default {
+        data: () => {
+            const illusts: IllustInfo[] = []
+            return {
+                illusts: illusts,
+            }
+        },
+
+        async mounted() {
+            const illustJSON = await fetch("/api/illusts/")
+            this.illusts = await illustJSON.json()
+            window.addEventListener("bodyFilterClick", disableIllustInfoEditDialog)
+        },
+
+        computed: {
+            editIllustInfo() {
+                return activateIllustInfoEditDialog
+            },
+        },
+    }
 </script>
