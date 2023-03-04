@@ -1,6 +1,9 @@
 package schema
 
-import "entgo.io/ent"
+import (
+	"entgo.io/ent"
+	"entgo.io/ent/schema/field"
+)
 
 // IllustTag holds the schema definition for the IllustTag entity.
 type IllustTag struct {
@@ -9,7 +12,18 @@ type IllustTag struct {
 
 // Fields of the IllustTag.
 func (IllustTag) Fields() []ent.Field {
-	return nil
+	return []ent.Field{
+		field.String("parentIllustID").
+			NotEmpty().
+			Immutable(),
+		field.String("prentTagID").
+			NotEmpty().
+			Immutable(),
+		field.String("illustTagID").
+			NotEmpty().
+			Unique().
+			Immutable(),
+	}
 }
 
 // Edges of the IllustTag.

@@ -2,10 +2,14 @@ node_modules
 frontend
 data/database/*
 data/illust/*
+ent/*
 
 v13s.config.json
 
 v13s
 v13s.exe
+
+!ent/schema
+!ent/generate.go
 
 !.gitkeep

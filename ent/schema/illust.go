@@ -23,9 +23,10 @@ func (Illust) Fields() []ent.Field {
 			NotEmpty().
 			Immutable(),
 		field.String("originalURL"),
-		field.Float("heightRatio").
+		field.Float32("heightRatio").
 			Positive(),
 		field.Time("createdAt").
+			Immutable().
 			Default(time.Now()),
 	}
 }

@@ -1,6 +1,9 @@
 package schema
 
-import "entgo.io/ent"
+import (
+	"entgo.io/ent"
+	"entgo.io/ent/schema/field"
+)
 
 // TagAlias holds the schema definition for the TagAlias entity.
 type TagAlias struct {
@@ -9,7 +12,16 @@ type TagAlias struct {
 
 // Fields of the TagAlias.
 func (TagAlias) Fields() []ent.Field {
-	return nil
+	return []ent.Field{
+		field.String("parentTagID").
+			NotEmpty().
+			Immutable(),
+		field.String("alias").
+			NotEmpty(),
+		field.String("tagAliasID").
+			NotEmpty().
+			Unique(),
+	}
 }
 
 // Edges of the TagAlias.
