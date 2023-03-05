@@ -1,20 +1,48 @@
 <script lang="ts" setup>
-    import { getOptions } from "../util"
+    import { getOptions, editIllustInfo, disableIllustInfoEditDialog } from "../util"
     import Header from "../components/Header.vue"
     import Illusts from "../components/Illusts.vue"
     import IllustInfoEditDialog from "../components/IllustInfoEditDialog.vue"
     import Footer from "../components/Footer.vue"
     import BodyFilter from "../components/BodyFilter.vue"
     import "../css/home.css"
+    import { IllustInfo } from "../v13s.types"
 
-    window.localStorage.removeItem("editIllustTargetID")
+    window.localStorage.removeItem("editTargetIllustID")
 </script>
 
 <script lang="ts">
+    window.addEventListener("popstate", () => {
+        if (window.location.pathname != "/edit/illust/") {
+            disableIllustInfoEditDialog()
+        }
+    })
+
     export default {
+        data: () => {
+            const illustInfo: IllustInfo = {
+                illustID: "",
+                hash: "",
+                originalURL: "",
+                heightRatio: "",
+                tags: [],
+                createdAt: "",
+            }
+            return {
+                illustInfo: illustInfo,
+            }
+        },
+
         async mounted() {
             const options = await getOptions()
             document.title = `Home - ${options.siteName}`
+        },
+
+        methods: {
+            async onillustInfoEditButtonClick(illust: IllustInfo) {
+                this.illustInfo = illust
+                editIllustInfo()
+            },
         },
     }
 </script>
@@ -22,9 +50,11 @@
 <template>
     <Header />
     <div id="body">
-        <Illusts />
+        <Illusts v-on:illustInfoEditButtonClick="onillustInfoEditButtonClick" />
     </div>
-    <IllustInfoEditDialog />
+    <KeepAlive>
+        <IllustInfoEditDialog v-model:illust-info="illustInfo" />
+    </KeepAlive>
     <Footer />
     <BodyFilter />
 </template>

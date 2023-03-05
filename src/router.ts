@@ -15,7 +15,7 @@ const routes = [
     },
     {
         path: "/edit/illust",
-        name: "home",
+        name: "illustInfoEdit",
         component: Home,
     },
 ]
