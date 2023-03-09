@@ -76,15 +76,15 @@
 }
 
 .illustTag[data-tag-type="WORK"]::before {
-    background-color: var(--color-tag-work);
+    background-color: var(--color-tag-work-main);
 }
 
 .illustTag[data-tag-type="CHARACTER"]::before {
-    background-color: var(--color-tag-character);
+    background-color: var(--color-tag-character-main);
 }
 
 .illustTag[data-tag-type="AUTHOR"]::before {
-    background-color: var(--color-tag-author);
+    background-color: var(--color-tag-author-main);
 }
 
 .illustInfoEditButton {
@@ -103,4 +103,108 @@
     font-family: "Material Icons";
     font-size: 92.5%;
     content: "edit";
+}
+
+.illustInfoDialog {
+    box-sizing: border-box;
+    display: flex;
+    width: calc(var(--body-width) * 1.375);
+    height: calc(var(--body-width) * 0.875);
+    padding: 1rem;
+    background-color: var(--color-child-02);
+    border-radius: 0.65rem;
+}
+
+#illustInfoEditPreviewImage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+#illustInfoEditPreviewImage img {
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    margin: auto 0;
+    border-radius: 0.48rem;
+}
+
+#illustInfoEditInputField {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    padding: 1rem 1.5rem;
+}
+
+#illustInfoEditInputField div[data-position="upper"] {
+    height: 50%;
+}
+
+#illustInfoEditInputField div[data-position="lower"] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    max-height: 50%;
+}
+
+.illustInfoEditTag {
+    display: flex;
+    align-items: center;
+    height: 0.95rem;
+    padding: 0.125rem 0.325rem;
+    font-size: 0.875rem;
+    line-height: 0.95rem;
+    border-radius: 0.225rem;
+    opacity: 1;
+    transition: color 0.2s, background-color 0.2s, opacity 0.2s, border-color 0.2s;
+}
+
+.illustInfoEditTag[data-is-exists="true"] {
+    border: 0.125rem dashed transparent;
+}
+
+.illustInfoEditTag[data-is-exists="true"][data-tag-type="WORK"] {
+    color: var(--color-tag-work-main);
+    background-color: var(--color-tag-work-sub);
+    fill: var(--color-tag-work-main);
+}
+
+.illustInfoEditTag[data-is-exists="true"][data-tag-type="CHARACTER"] {
+    color: var(--color-tag-character-main);
+    background-color: var(--color-tag-character-sub);
+    fill: var(--color-tag-character-main);
+}
+
+.illustInfoEditTag[data-is-exists="true"][data-tag-type="AUTHOR"] {
+    color: var(--color-tag-author-main);
+    background-color: var(--color-tag-author-sub);
+    fill: var(--color-tag-author-main);
+}
+
+.illustInfoEditTag[data-is-exists="false"] {
+    color: var(--color-complement-05);
+    border: 0.125rem dashed var(--color-complement-05);
+    fill: var(--color-complement-05);
+}
+
+.tagStatusToggleButton {
+    position: relative;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-inline-start: 0.325rem;
+    transition-duration: 0.2s;
+    transition-property: transform;
+    transform: rotate(0deg);
+}
+
+.tagStatusToggleButton svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

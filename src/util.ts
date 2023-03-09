@@ -1,4 +1,4 @@
-import { Options, IllustInfo } from "./v13s.types"
+import { Options } from "./v13s.types"
 
 export async function getOptions(): Promise<Options> {
     const response = await fetch("/api/options/")
@@ -21,10 +21,16 @@ export function activateIllustInfoEditDialog() {
 }
 
 export function disableIllustInfoEditDialog() {
-    history.pushState("", "", "/")
+    history.replaceState("", "", "/")
 
-    const illustInfoEditDialog = document.getElementById("illustInfoEditDialog") as HTMLDivElement
+    const illustInfoEditDialog = document.getElementById("illustInfoEditDialog") as HTMLDialogElement
     const bodyFilter = document.getElementById("bodyFilter") as HTMLDivElement
+    const searchBox = document.getElementById("searchBox") as HTMLInputElement
     illustInfoEditDialog.style.animationName = "disableModal"
-    bodyFilter.style.animationName = "disableBodyFilter"
+    if (document.activeElement != searchBox) {
+        bodyFilter.style.animationName = "disableBodyFilter"
+    }
+    setTimeout(function () {
+        illustInfoEditDialog.open = false
+    }, 375)
 }

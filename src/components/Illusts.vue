@@ -29,7 +29,7 @@
         methods: {
             callIllustInfoEditHandler(illust: IllustInfo) {
                 this.$emit("illustInfoEditButtonClick", illust)
-            }
-        }
+            },
+        },
     }
 </script>

@@ -15,8 +15,7 @@ const routes = [
     },
     {
         path: "/edit/illust",
-        name: "illustInfoEdit",
-        component: Home,
+        redirect: "/",
     },
 ]
 

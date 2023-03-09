@@ -4,6 +4,9 @@
     line-height: 1;
     color: inherit;
     transition-timing-function: cubic-bezier(0, 0.64, 0.5, 1) !important;
+    transition-duration: 0.375s;
+    transition-property: none;
+    animation-duration: 0.375s;
     animation-timing-function: cubic-bezier(0, 0.64, 0.5, 1) !important;
     animation-fill-mode: forwards;
 }
@@ -21,6 +24,20 @@
 
 a {
     text-decoration-thickness: 0.1rem;
+}
+
+dialog {
+    pointer-events: none;
+    border: 0;
+    opacity: 0;
+}
+
+dialog[open] {
+    pointer-events: auto;
+}
+
+svg {
+    display: inline-block;
 }
 
 .materialIcons {

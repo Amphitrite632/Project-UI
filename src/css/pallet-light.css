@@ -8,7 +8,10 @@
     --color-complement-04: #cfcfcf;
     --color-complement-05: #8f959d;
     --color-accent-01: #38393d;
-    --color-tag-work: #08cc8b;
-    --color-tag-character: #f55f99;
-    --color-tag-author: #128afa;
+    --color-tag-work-main: #05d38f;
+    --color-tag-work-sub: #caffed;
+    --color-tag-character-main: #f55f99;
+    --color-tag-character-sub: #ffd8e7;
+    --color-tag-author-main: #128afa;
+    --color-tag-author-sub: #c8e5ff;
 }
