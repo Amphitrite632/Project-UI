@@ -3,15 +3,15 @@
     --color-child-01: #141517;
     --color-child-02: #ffffff;
     --color-complement-01: #fbfeff;
-    --color-complement-02: #ecf0f6;
+    --color-complement-02: #eceff4;
     --color-complement-03: #e4e8ee;
     --color-complement-04: #cfcfcf;
     --color-complement-05: #8f959d;
     --color-accent-01: #38393d;
     --color-tag-work-main: #05d38f;
-    --color-tag-work-sub: #caffed;
+    --color-tag-work-sub: #05d38f29;
     --color-tag-character-main: #f55f99;
-    --color-tag-character-sub: #ffd8e7;
+    --color-tag-character-sub: #f55f9929;
     --color-tag-author-main: #128afa;
-    --color-tag-author-sub: #c8e5ff;
+    --color-tag-author-sub: #c8e5ff29;
 }

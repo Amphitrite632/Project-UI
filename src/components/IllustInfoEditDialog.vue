@@ -14,27 +14,23 @@
                 <div class="illustInfoInputContainer">
                     <label for="illustTagAddInput">タグを追加</label>
                     <input id="illustTagAddInput" />
-                    <div id="illustTagSuggestionContainer">
-                        <p>No suggestions</p>
-                        <div v-for="suggestion in suggestions" class="illustTagSuggestion" @click="addTagToIllustInfo(suggestion.tagID)">
-                            {{ suggestion.officialName }}
-                        </div>
-                    </div>
                     <p></p>
+                </div>
+                <div id="illustTagSuggestionContainer">
+                    <p>No suggestions</p>
+                    <div v-for="suggestion in suggestions" class="illustTagSuggestion" @click="addTagToIllustInfo(suggestion.tagID)">
+                        {{ suggestion.officialName }}
+                    </div>
                 </div>
             </div>
             <div data-position="lower">
                 <div class="illustInfoEditTag" v-for="tag in (tags = illustInfo.tags)" :data-tag-id="tag.tagID" :data-tag-type="tag.type" data-is-exists="true">
-                    {{ tag.officialName }}<span class="tagStatusToggleButton" @click="(event) => toggleTagStatus(event.target as HTMLSpanElement)"><CrossIcon style="pointer-events: none" /></span>
+                    {{ tag.officialName }}<span class="tagStatusToggleButton materialIcons" @click="(event) => toggleTagStatus(event.target as HTMLSpanElement)">close</span>
                 </div>
             </div>
         </div>
     </dialog>
 </template>
-
-<script lang="ts" setup>
-    import CrossIcon from "./icon/Cross.vue"
-</script>
 
 <script lang="ts">
     import { PropType } from "vue"

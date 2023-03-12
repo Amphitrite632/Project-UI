@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-    import { getOptions, editIllustInfo, disableIllustInfoEditDialog } from "../util"
+    import { editIllustInfo, disableIllustInfoEditDialog } from "../util"
     import Header from "../components/Header.vue"
     import Illusts from "../components/Illusts.vue"
     import IllustInfoEditDialog from "../components/IllustInfoEditDialog.vue"
@@ -7,8 +7,8 @@
     import BodyFilter from "../components/BodyFilter.vue"
     import "../css/home.css"
     import { IllustInfo } from "../v13s.types"
-
-    window.localStorage.removeItem("editTargetIllustID")
+    
+    document.title = `Home - ${document.title}`
 </script>
 
 <script lang="ts">
@@ -31,11 +31,6 @@
             return {
                 illustInfo: illustInfo,
             }
-        },
-
-        async mounted() {
-            const options = await getOptions()
-            document.title = `Home - ${options.siteName}`
         },
 
         methods: {

@@ -74,10 +74,6 @@ func entryPointHandler(w http.ResponseWriter, r *http.Request, options Options) 
 	template.ExecuteTemplate(w, "index.html", variables)
 }
 
-func optionsRequestHandler(w http.ResponseWriter, r *http.Request, rawOptions []byte) {
-	w.Write(rawOptions)
-}
-
 func illustsRequestHandler(w http.ResponseWriter, r *http.Request, entC *ent.Client, ctx context.Context) {
 	illustsData, _ := entC.Illust.Query().All(ctx)
 
@@ -160,7 +156,7 @@ func main() {
 	_, err := os.Stat("v13s.config.json")
 	if err != nil {
 		options := Options{
-			SiteName:        "Vivliothikarios",
+			SiteName:        "",
 			SiteDescription: "",
 			ServerPort:      9090,
 		}
@@ -192,10 +188,10 @@ func main() {
 	}()
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("frontend/static/"))))
-	http.Handle("/asset/illust/", http.StripPrefix("/asset/illust/", http.FileServer(http.Dir("data/illust/"))))
-	http.HandleFunc("/api/options/", func(w http.ResponseWriter, r *http.Request) {
-		optionsRequestHandler(w, r, rawOptions)
+	http.HandleFunc("/asset/illust/.webp", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(200)
 	})
+	http.Handle("/asset/illust/", http.StripPrefix("/asset/illust/", http.FileServer(http.Dir("data/illust/"))))
 	http.HandleFunc("/api/illusts/", func(w http.ResponseWriter, r *http.Request) {
 		illustsRequestHandler(w, r, entC, ctx)
 	})
